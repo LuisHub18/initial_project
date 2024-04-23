@@ -1,0 +1,1 @@
+insert into clientes values (1, 'Luis Eduardo', 'Tellez Quinonez', 'Colinas de la quebrada', '6671216676','TEQL020718', 'TEQL020728HSLLXSA7', '80197');
