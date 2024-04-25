@@ -1,3 +1,4 @@
+
 import mysql from "mysql";
 
 
@@ -7,3 +8,4 @@ export const conection = mysql.createConnection({
     password:'',
     database:'pwdata'
 })
+

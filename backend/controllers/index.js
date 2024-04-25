@@ -1,3 +1,4 @@
+
 import { conection } from '../database.js';
 
 const getClients = (req, res) => {
