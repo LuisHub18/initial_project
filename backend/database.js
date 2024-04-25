@@ -1,10 +1,11 @@
-import {Pool} from 'mariadb';
 
-const pool = new Pool({
-    host: 'localhost',
+import mysql from "mysql";
+
+
+export const conection = mysql.createConnection({
+    host:'localhost',
     user: 'root',
-    password: '',
-    database: 'pwdata'
-}); 
+    password:'',
+    database:'pwdata'
+})
 
-export default pool;

@@ -7,6 +7,6 @@ router.get('/', () =>
     console.log("Get out here")
 );
 
-router.get('/clients', controller.getClients);
+router.get('/api/clients', controller.getClients);
 
 export default router;

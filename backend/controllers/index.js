@@ -1,16 +1,25 @@
-import {Request, Response} from 'express';
-import {QueryResult} from 'mariadb';
 
-export const index = (req, res) => {
-    res.json({message: 'Hello world'});
+import { conection } from '../database.js';
+
+const getClients = (req, res) => {
+    conection.query('select * from clientes;', (error, filas) =>{
+        if(error){
+            throw error;
+        }else{
+            console.log('All well!')
+            res.send(filas);
+        }
+    });
 }
 
-export const getClients = async (req, res) => {
-    try {
-        const response = await pool.query('SELECT * FROM client;');
-        return res.status(200).json(response.rows);
-    } catch (e) {
-        console.log(e);
-        return res.status(500).json('Unexpected error');
-    }
-}
+export default getClients;
+
+// export const getUsers = async (req: Request, res: Response): Promise<Response> => {
+//     try {
+//         const response: QueryResult = await pool.query('SELECT * FROM users');
+//         return res.status(200).json(response.rows);
+//     } catch (e) {
+//         console.log(e);
+//         return res.status(500).json('Unexpected error');
+//     }
+// }
