@@ -17,6 +17,7 @@ conection.connect( (error) =>{
 
 
 app.use(cors())
+
 app.use(router);
 
 app.listen(port, () =>
