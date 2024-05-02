@@ -4,10 +4,11 @@ import { conection } from '../database.js';
 export const getClients = (req, res) => {
     conection.query('select * from clientes;', (error, filas) => {
         if(error){
-            throw error;
+            console.error('Error getting clients:', error);
+            res.status(500).send('Error getting clients');
         } else {
-            console.log('¡All Well!');
-            res.send(filas);
+            console.log('Fetching clients...');
+            res.status(201).send('Clients fetched successfully');
         }
     });
 };
@@ -16,17 +17,18 @@ export const getClientById = (req, res) => {
     const id = req.params.id;
     conection.query('select * from clientes where id = ?;', [id], (error, filas) => {
         if(error){
-            throw error;
+            console.error('Error getting client:', error);
+            res.status(500).send('Error getting client');
         } else {
-            console.log('¡All Well!');
-            res.send(filas);
+            console.log('Fetching client...');
+            res.status(201).send('Client fetched successfully');
         }
     });
 };
 
 export const createClient = (req, res) => {
-    const {id, nombre, apellido, direccion, telefono, curp, rfc, codigo_postal} = req.body;
-    conection.query('INSERT INTO clientes (id, nombre, apellido, direccion, telefono, curp, rfc, codigo_postal) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [id, nombre, apellido, direccion, telefono, curp, rfc, codigo_postal], (error, filas) => {
+    const client = req.body;
+    conection.query('INSERT INTO clientes SET ?;', client, (error, filas) => {
         if(error) {
             console.error('Error creating client:', error);
             res.status(500).send('Error creating client');
@@ -41,11 +43,12 @@ export const updateClient = (req, res) => {
     const id = req.params.id;
     const updatedClient = req.body;
     conection.query('update clientes set ? where id = ?;', [updatedClient, id], (error, filas) => {
-        if(error){
-            throw error;
+        if(error) {
+            console.error('Error updating client:', error);
+            res.status(500).send('Error updating client');
         } else {
-            console.log('¡All Well!');
-            res.send('Client updated');
+            console.log('Client updated successfully');
+            res.status(201).send('Client updated');
         }
     });
 }
@@ -53,11 +56,12 @@ export const updateClient = (req, res) => {
 export const deleteClient = (req, res) => {
     const id = req.params.id;
     conection.query('delete from clientes where id = ?;', [id], (error, filas) => {
-        if(error){
-            throw error;
+        if(error) {
+            console.error('Error deleting client:', error);
+            res.status(500).send('Error deleting client');
         } else {
-            console.log('¡All Well!');
-            res.send('Client deleted');
+            console.log('Client deleted successfully');
+            res.status(201).send('Client deleted');
         }
     }); 
 }
