@@ -49,3 +49,15 @@ export const updateClient = (req, res) => {
         }
     });
 }
+
+export const deleteClient = (req, res) => {
+    const id = req.params.id;
+    conection.query('delete from clientes where id = ?;', [id], (error, filas) => {
+        if(error){
+            throw error;
+        } else {
+            console.log('¡All Well!');
+            res.send('Client deleted');
+        }
+    }); 
+}
