@@ -20,6 +20,10 @@ app.use(cors())
 app.use(express.json());
 app.use(router);
 
+app.get('/', ()=>{
+    console.log('Here is the rabbit');
+})
+
 app.listen(port, () =>
     console.log(`Server listen on port ${port}`)
 );
