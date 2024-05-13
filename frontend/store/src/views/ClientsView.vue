@@ -1,10 +1,11 @@
 <template>
+    <br>
     <div class="container">
         <div class="card">
             <div class="card-header">
                 <h4>Clientes
-                    <RouterLink to="/clientes/create" class="btn btn-primary float-end">
-                        Agregar
+                    <RouterLink to="/clients/create" class="btn btn-primary float-end">
+                        Add
                     </RouterLink>
                 </h4>
             </div>
@@ -54,8 +55,10 @@
         },
         methods:{
             getClients(){
-                axios.get('https:/localhost:300/api/clients').then( (res) => {
-                    this.clients = res.data; 
+                axios.get('http://localhost:3000/api/clients').then( (res) => {
+                    this.clients = res.data.clients; 
+                    
+                    console.log(res.data.clients)
                     console.log(res.data)
                 })
             }
