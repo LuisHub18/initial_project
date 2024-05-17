@@ -21,7 +21,7 @@ export const getClientById = (req, res) => {
             res.status(500).send('Error getting client');
         } else {
             console.log('Fetching client...');
-            es.status(201).json({message : 'Client fetched succesfully', clients: filas});
+            res.status(201).json({message : 'Client fetched succesfully', client: filas});
         }
     });
 };

@@ -3,6 +3,9 @@
     <h1>
         Create Client
     </h1>
+    <div v-if="message" class="alert alert-success" role="alert">
+        Saved SuccesFully!
+    </div>
     <form class="container" @submit.prevent="createClient">
         <div class="form-group">
             <label for="id">Id:</label>
@@ -57,6 +60,7 @@
             name: "CreateClientView",
             data() {
                 return {
+                    message: false,
                     client: {
                         id: '',
                         nombre: '',
@@ -74,6 +78,17 @@
                     axios.post('http://localhost:3000/api/clients', this.client)
                     .then(response => {
                         console.log('Form submitted successfully:', response.data);
+                        this.client = {
+                            id: '',
+                            nombre: '',
+                            apellido: '',
+                            direccion: '',
+                            telefono: '',
+                            curp: '',
+                            rfc: '',
+                            codigo_postal: ''
+                        }
+                        this.message = true;
                     })
                     .catch(error => {
                         console.error('Error submitting form:', error);

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ClientsView from '../views/ClientsView.vue'
 import CreateClientView from '../views/CreateClientView.vue'
+import EditClientView from '../views/EditClientView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/clients/create',
       name:'create_clients',
       component: CreateClientView
+    },
+    {
+      path: '/clients/:id/edit',
+      name: 'edit_client',
+      component: EditClientView
     },
     {
       path: '/about',
