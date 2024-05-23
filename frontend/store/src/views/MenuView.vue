@@ -1,5 +1,5 @@
 <script>
-    import { RouterLink } from 'vue-router'
+    import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -13,6 +13,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <RouterLink class="navbar-brand" to="/clients">Clients</RouterLink>
+                    <RouterLink class="navbar-brand" to="/clients/register">Register</RouterLink>
                     <!-- <RouterLink class="navbar-brand" to="/proveedores">Proveedores</RouterLink>
                     <RouterLink class="navbar-brand" to="/ventas">Ventas</RouterLink> -->
                 </li>

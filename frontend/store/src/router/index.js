@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ClientsView from '../views/ClientsView.vue'
 import CreateClientView from '../views/CreateClientView.vue'
 import EditClientView from '../views/EditClientView.vue'
+import RegisterView from '../views/RegisterView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/clients/:id/edit',
       name: 'edit_client',
       component: EditClientView
+    },
+    {
+      path: '/clients/register',
+      name: 'register',
+      component: RegisterView
     },
     {
       path: '/about',
